@@ -1,0 +1,9 @@
+@page
+@model HtmxWebApp.Pages.AjaxModel
+@{
+}
+
+<section>
+	<button hx-get="" hx-include="[name='handler']">GET</button>
+	<input name="handler" type="hidden" value="partial" />
+</section>
