@@ -1,9 +1,11 @@
 @page
-@model HtmxWebApp.Pages.AjaxModel
+@model AjaxModel
 @{
+	ViewBag.Title = "Ajax";
 }
 
 <section>
 	<button hx-get="" hx-include="[name='handler']">GET</button>
+	<button hx-post="">POST</button>
 	<input name="handler" type="hidden" value="partial" />
 </section>
