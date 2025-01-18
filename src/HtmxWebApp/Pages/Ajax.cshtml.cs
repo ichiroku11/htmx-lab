@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HtmxWebApp.Pages;
 
-// hx-postで送信されたリクエストに対して、AntiforgeryTokenの検証を無効化
+// 動作確認のため
+// GET以外で送信されたリクエストに対しては
+// AntiforgeryTokenの検証を無効化する
 [IgnoreAntiforgeryToken]
 public class AjaxModel : PageModel {
 	public void OnGet() {
@@ -13,4 +15,7 @@ public class AjaxModel : PageModel {
 	public IActionResult OnGetPartial() => PartialAjax();
 
 	public IActionResult OnPost() => PartialAjax();
+	public IActionResult OnPut() => PartialAjax();
+	public IActionResult OnPatch() => PartialAjax();
+	public IActionResult OnDelete() => PartialAjax();
 }
