@@ -10,7 +10,7 @@ public class AjaxModel : PageModel {
 	public void OnGet() {
 	}
 
-	private IActionResult PartialAjax() => Partial("_Ajax");
+	private PartialViewResult PartialAjax() => Partial("_Ajax");
 
 	public IActionResult OnGetPartial() => PartialAjax();
 
