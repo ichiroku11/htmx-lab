@@ -4,6 +4,18 @@
 	Layout = null;
 }
 
-<div>
-	<p>// todo:</p>
+<div hx-target="this" hx-swap="outerHTML">
+	@if (Model.IsEdit) {
+		<span>// todo: 編集</span>
+		<div>
+			<button hx-get="/clicktoedit/contract">Cancel</button>
+			<button>Save</button>
+		</div>
+	} else {
+		<span>// todo: 参照</span>
+		<div>
+			<button hx-get="/clicktoedit/contract" hx-include="[name='handler']">Edit</button>
+			<input name="handler" type="hidden" value="edit" />
+		</div>
+	}
 </div>

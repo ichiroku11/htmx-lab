@@ -4,9 +4,9 @@
 	ViewBag.Title = "Click to Edit";
 }
 
-@* ロードのタイミングで呼び出す *@
-<div hx-get="/clicktoedit/contract" hx-trigger="load">
-</div>
+@* hx-trigger="load": ロードのタイミングで呼び出す *@
+@* hx-swap="outerHTML": この要素自身を置き換える *@
+<div hx-get="/clicktoedit/contract" hx-trigger="load" hx-swap="outerHTML"></div>
 <section>
 	<ul>
 		<li><a href="https://htmx.org/examples/click-to-edit/">&lt;/&gt; htmx ~ Examples ~ Click to Edit</a></li>
