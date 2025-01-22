@@ -1,28 +1,40 @@
+using HtmxWebApp.Models.ClickToEdit;
+using Microsoft.AspNetCore.Mvc;
+
 namespace HtmxWebApp.Pages.ClickToEdit;
 
-public class Contract {
-	public string Surname { get; set; } = "";
-	public string GivenName { get; set; } = "";
-	public string MailAddress { get; set; } = "";
-}
+public class ContractModel(ContractRepository repository) : PageModel {
+	// テスト用のID
+	private static readonly long _contractId = 1L;
+	private readonly ContractRepository _repository = repository;
 
-public class ContractModel : PageModel {
 	public bool IsEdit { get; set; } = false;
 
 	public Contract Contract { get; set; } = new Contract();
 
-	public void OnGet() {
-		Contract.GivenName = "Taro";
-		Contract.Surname = "Yamada";
-		Contract.MailAddress = "taro@example.jp";
+	public async Task<IActionResult> OnGetAsync() {
+		var contract = await _repository.GetContractByIdAsync(_contractId);
+		if (contract is null) {
+			return NotFound();
+		}
+
+		Contract = contract;
+
+		return Page();
 	}
 
-	// todo:
-	public void OnGetEdit() {
+	public async Task<IActionResult> OnGetEditAsync() {
 		IsEdit = true;
-		Contract.GivenName = "Taro";
-		Contract.Surname = "Yamada";
-		Contract.MailAddress = "taro@example.jp";
+
+		var contract = await _repository.GetContractByIdAsync(_contractId);
+		if (contract is null) {
+			return NotFound();
+		}
+
+		Contract = contract;
+
+		return Page();
+
 	}
 
 	// - OnPost
