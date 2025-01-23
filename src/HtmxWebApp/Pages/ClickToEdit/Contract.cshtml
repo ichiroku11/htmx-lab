@@ -5,7 +5,8 @@
 }
 
 @if (Model.IsEdit) {
-	<form hx-target="this" hx-swap="outerHTML">
+	<form hx-target="this" hx-swap="outerHTML" asp-antiforgery="true">
+		<input type="hidden" asp-for="Contract.Id" />
 		<div>
 			<label>Surname:</label>
 			<input asp-for="Contract.Surname" />
@@ -20,7 +21,7 @@
 		</div>
 		<div>
 			<button hx-get="/clicktoedit/contract">Cancel</button>
-			<button>Save</button>
+			<button hx-post="/clicktoedit/contract">Save</button>
 		</div>
 	</form>
 } else {

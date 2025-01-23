@@ -10,6 +10,7 @@ public class ContractModel(ContractRepository repository) : PageModel {
 
 	public bool IsEdit { get; set; } = false;
 
+	[BindProperty]
 	public Contract Contract { get; set; } = new Contract();
 
 	public async Task<IActionResult> OnGetAsync() {
@@ -37,5 +38,11 @@ public class ContractModel(ContractRepository repository) : PageModel {
 
 	}
 
-	// - OnPost
+	public async Task<IActionResult> OnPostAsync() {
+		// tooo: validate
+
+		await _repository.UpdateContractById(Contract);
+
+		return Page();
+	}
 }
