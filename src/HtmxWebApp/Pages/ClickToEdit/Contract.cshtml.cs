@@ -39,7 +39,10 @@ public class ContractModel(ContractRepository repository) : PageModel {
 	}
 
 	public async Task<IActionResult> OnPostAsync() {
-		// tooo: validate
+		if (!ModelState.IsValid) {
+			IsEdit = true;
+			return Page();
+		}
 
 		await _repository.UpdateContractById(Contract);
 

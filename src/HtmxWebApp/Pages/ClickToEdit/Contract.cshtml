@@ -5,6 +5,7 @@
 }
 
 @if (Model.IsEdit) {
+	<div asp-validation-summary="All"></div>
 	<form hx-target="this" hx-swap="outerHTML" asp-antiforgery="true">
 		<input type="hidden" asp-for="Contract.Id" />
 		<div>
