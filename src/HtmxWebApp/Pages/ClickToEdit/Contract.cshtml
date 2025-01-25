@@ -1,0 +1,47 @@
+@page
+@model ContractModel
+@{
+	Layout = null;
+}
+
+@if (Model.IsEdit) {
+	<div asp-validation-summary="All"></div>
+	<form hx-target="this" hx-swap="outerHTML" asp-antiforgery="true">
+		<input type="hidden" asp-for="Contract.Id" />
+		<div>
+			<label>Surname:</label>
+			<input asp-for="Contract.Surname" />
+		</div>
+		<div>
+			<label>Given name:</label>
+			<input asp-for="Contract.GivenName" />
+		</div>
+		<div>
+			<label>Mail address:</label>
+			<input asp-for="Contract.MailAddress" />
+		</div>
+		<div>
+			<button hx-get="/clicktoedit/contract">Cancel</button>
+			<button hx-post="/clicktoedit/contract">Save</button>
+		</div>
+	</form>
+} else {
+	<div hx-target="this" hx-swap="outerHTML">
+		<div>
+			<label>Surname:</label>
+			<span>@Model.Contract.Surname</span>
+		</div>
+		<div>
+			<label>Given name:</label>
+			<span>@Model.Contract.GivenName</span>
+		</div>
+		<div>
+			<label>Mail address:</label>
+			<span>@Model.Contract.MailAddress</span>
+		</div>
+		<div>
+			<button hx-get="/clicktoedit/contract" hx-include="[name='handler']">Edit</button>
+			<input name="handler" type="hidden" value="edit" />
+		</div>
+	</div>
+}
