@@ -1,0 +1,14 @@
+@page
+@model IndexModel
+@{
+	ViewBag.Title = "Click to Edit";
+}
+
+@* hx-trigger="load": ロードのタイミングで呼び出す *@
+@* hx-swap="outerHTML": この要素自身を置き換える *@
+<div hx-get="/clicktoedit/contract" hx-trigger="load" hx-swap="outerHTML"></div>
+<section>
+	<ul>
+		<li><a href="https://htmx.org/examples/click-to-edit/">&lt;/&gt; htmx ~ Examples ~ Click to Edit</a></li>
+	</ul>
+</section>
