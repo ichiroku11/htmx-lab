@@ -12,6 +12,7 @@ services.Configure<RouteOptions>(options => {
 
 var app = builder.Build();
 
+app.MapStaticAssets();
 app.MapRazorPages();
 
 app.Run();
